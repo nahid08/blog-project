@@ -64,4 +64,13 @@ module.exports = {
         return res.status(404).send(err);
       });
   },
+
+  getAllBlog: (req, res) => {
+     return userService.getAllBlog().then((data) => {
+       return res.status(200).json(data);
+     }).catch((err) => {
+       console.log(err.message)
+       res.status(404).send(err);
+     })
+  }
 };

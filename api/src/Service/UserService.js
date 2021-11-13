@@ -5,13 +5,14 @@ const db = require("../model/index");
 
 module.exports = {
   registration: (req, res) => {
-    const { username, fullname, email, password, confirmpassword } = req.body;
+    const { username, fullname, email, password,} = req.body;
     return user
-      .create({ username, fullname, email, password, confirmpassword })
+      .create({ username, fullname, email, password,})
       .then((data) => {
         return Promise.resolve();
       })
       .catch((err) => {
+        console.log(err.message);
         return Promise.reject();
       });
   },
@@ -66,4 +67,17 @@ module.exports = {
         return data;
       });
   },
+
+  getAllBlog: (data) => {
+    return blogs.findAll({
+      include: [
+        {
+          model: user,
+          attributes: ['id', 'username']
+        }
+      ]
+    }).then((val) => {
+      return val;
+    }).catch(err => console.log(err))
+  }
 };
