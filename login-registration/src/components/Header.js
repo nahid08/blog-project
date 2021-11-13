@@ -19,7 +19,8 @@ function Header(props) {
             className="justify-content-end"
           >
             <Nav>
-              <Link to={`${props.match.url}`}>Profile </Link>
+              <Link to={`${props.match.url}/home`} className="mr-2">Home</Link>
+              <Link to={`${props.match.url}`} className="mr-2">Profile </Link>
               <Link to={`${props.match.url}/addblog`}>Add Blog</Link>
             </Nav>
           </Navbar.Collapse>

@@ -21,7 +21,7 @@ function BlogCard(props) {
         <Card className="card-style"  onClick={showBlog}>
           <Card.Title className="text-center">{props.title}</Card.Title>
           <Card.Body>
-            <Card.Text className="">
+            <Card.Text className="text-style">
               {props.description}
             </Card.Text>
           </Card.Body>

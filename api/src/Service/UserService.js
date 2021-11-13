@@ -1,5 +1,6 @@
 const { getBlog } = require("../Controller/UserController");
 const { user, blogs } = require("../model");
+const { Op } = require("sequelize");
 const db = require("../model/index");
 
 module.exports = {
@@ -53,7 +54,7 @@ module.exports = {
   },
 
   getBlogList: (data) => {
-      console.log(data, 'no');
+    console.log(data, "no");
     return blogs
       .findAll({
         where: {
