@@ -42,20 +42,26 @@ module.exports = {
   },
 
   getBlog: (data) => {
-    return blogs
-      .findOne({
-        where: {
-          userId: data.userId,
-          id: data.blogId,
-        },
-      })
+    return blogs.findOne({
+      include: [
+        {
+          model: user,
+          attributes: [],
+          where: {
+            username: data.username
+          }
+        }
+      ],
+      where: {
+        id: data.blogId
+      }
+    })
       .then((data) => {
         return data;
       });
   },
 
   getBlogList: (data) => {
-    console.log(data, "no");
     return blogs
       .findAll({
         where: {

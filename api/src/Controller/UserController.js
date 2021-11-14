@@ -39,14 +39,16 @@ module.exports = {
   },
 
   getBlog: (req, res) => {
-    const { userId, blogId } = req.query;
+   
+    const { username, blogId } = req.query;
 
     return userService
-      .getBlog({ userId, blogId })
+      .getBlog({ username, blogId })
       .then((data) => {
         return res.status(200).json(data);
       })
       .catch((err) => {
+        console.log(err.message);
         return res.status(404).send(err);
       });
   },
