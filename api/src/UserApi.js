@@ -1,10 +1,12 @@
 const UserController = require("./Controller/UserController");
-const { createToken, authenticateToken} = require("./middlewares/JsonMiddleware");
+const { createToken, authenticateToken, clearToken} = require("./middlewares/JsonMiddleware");
 
 module.exports = (app) => {
     app.post("/registration", UserController.registration);
 
     app.post("/login", UserController.authenticateUser, createToken);
+
+    app.post('/logout', clearToken);
 
     app.post("/addblog", authenticateToken, UserController.addblog);
 

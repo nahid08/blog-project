@@ -10,35 +10,16 @@ import Blog from "./Blog";
 import AddBlog from "./AddBlog";
 
 function Profile(props) {
+
+  useEffect(() => {
+    console.log('dasd');
+  })
   return (
     <>
       <Container fluid>
         <Row>
           <Col>
-            <Header />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Switch>
-              <Route
-                path={`${props.match.path}/addblog`}
-                render={() => {
-                  return <AddBlog />;
-                }}
-                exact
-              />
-                 <Route
-                path={`${props.match.path}/blog/:blogId`}
-                render={() => {
-                  return <Blog/>
-                }}
-                exact
-              />
-             
-              <Route path="" render={() => <BlogList />} exact />
-           
-            </Switch>
+            <BlogList />
           </Col>
         </Row>
       </Container>

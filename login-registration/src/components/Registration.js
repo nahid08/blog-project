@@ -16,7 +16,7 @@ export default function Registration() {
     const submit = () => {
 
         RegistrationService.post(
-            { username, fullname, email, password, confirmPassword }
+            { username, fullname, email, password }
         ).then((res) => {
             console.log(res);
             history.push("/login");

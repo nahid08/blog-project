@@ -7,12 +7,13 @@ import './BlogCard.css';
 
 function BlogCard(props) {
 
-  const user = useSelector(state => state.user);
   const history = useHistory();
+
+  console.log(props);
 
 
   const showBlog = () => {
-      history.push(`${props.match.url}/blog/${props.id}`);
+      history.push(`${props.name}/blog/${props.id}`);
   }
 
   return (

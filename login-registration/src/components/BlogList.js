@@ -39,12 +39,16 @@ import BlogCard from "./BlogCard";
       return (
         <BlogCard
           id={blog.id}
+          key={blog.id}
           title={blog.title}
+          name={user.username}
           description={blog.description}
         />
       );
     });
   };
+
+  console.log('dsad')
 
   return (
     <>

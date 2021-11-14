@@ -32,6 +32,12 @@ const authenticateToken = (req,res,next) => {
     });
 };
 
+const clearToken = (req, res) => {
+    console.log('logout');
+    res.clearCookie('jwt');
+    res.status(200).send('user is logged out.');
+}
+
 module.exports = {
-    createToken, authenticateToken
+    createToken, authenticateToken,clearToken
 };

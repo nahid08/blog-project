@@ -9,12 +9,10 @@ function Blog(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const { blogId } = useParams();
-  const user = useSelector(state => state.user);
-  const id = user.id;
+  const { blogId, username } = useParams();
 
   const params = {
-    userId: id, blogId
+    username, blogId
   }
   
 

@@ -25,7 +25,7 @@ export default function Login() {
     }
 
     const goToRegister = () => {
-        history.push("/");
+        history.push("/registration");
     }
 
     return (

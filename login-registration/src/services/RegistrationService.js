@@ -16,10 +16,15 @@ export default {
     },
 
     getBlog: (queryParam) => {
+        console.log(queryParam);
         return http.get('/getBlog', queryParam);
     },
 
     getBlogList: (queryParam) => {
         return http.get('/getBlogList', queryParam);
+    },
+
+    getAllBlog: () => {
+        return http.get('/getAllBlog');
     }
 }
