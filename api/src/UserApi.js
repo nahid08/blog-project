@@ -14,5 +14,5 @@ module.exports = (app) => {
 
     app.get('/getBlogList', authenticateToken, UserController.getBlogList);
 
-    app.get('/getAllBlog', authenticateToken, UserController.getAllBlog);
+    app.get('/getAllBlog',  UserController.getAllBlog);
 }

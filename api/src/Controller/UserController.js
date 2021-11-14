@@ -18,10 +18,10 @@ module.exports = {
       .login(req.body)
       .then((data) => {
         req.body.id = data.id;
+        req.body.email = data.email
         next();
       })
       .catch((err) => {
-        console.log(err);
         return res.status(403).json(err);
       });
   },

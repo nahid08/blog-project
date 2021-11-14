@@ -25,9 +25,11 @@ module.exports = {
           username,
           password,
         },
+        attributes: ['id', 'username', 'email'],
         raw: true,
       })
       .then((data) => {
+        console.log(data);
         if (data === null) return Promise.reject("user not found.");
         return data;
       });
