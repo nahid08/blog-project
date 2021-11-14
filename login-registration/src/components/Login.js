@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector} from 'react-redux'
 import UserService from '../services/RegistrationService';
 import login from '../actions/login';
+import Notification from "../helper/Notification";
 
 export default function Login() {
 
@@ -14,14 +15,14 @@ export default function Login() {
     const dispatch = useDispatch();
 
     const onSubmit = () => {
-        dispatch(login({username, password})).
-        then((data) => {
-            history.push(`/${username}`);
-        }).
-        catch((err) => {
-            console.log(err);
+        dispatch(login({username, password}))
+        .then((res) => {
+            history.push(`/${username}`)
+            Notification({
+                message: 'Successful',
+                appearance: 'success'
+            })
         })
-        
     }
 
     const goToRegister = () => {

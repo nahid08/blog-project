@@ -20,7 +20,6 @@ import BlogCard from "./BlogCard";
       .then((res) => {
         const arr = [];
         for (let i = 0; i < res.data.length; i++) {
-          console.log(i);
           arr.push(res.data[i]);
         }
         return arr;

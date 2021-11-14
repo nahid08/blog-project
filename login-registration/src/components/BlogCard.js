@@ -8,10 +8,7 @@ import './BlogCard.css';
 function BlogCard(props) {
 
   const history = useHistory();
-
-  console.log(props);
-
-
+  
   const showBlog = () => {
       history.push(`${props.name}/blog/${props.id}`);
   }

@@ -5,15 +5,15 @@ export default function login(data) {
     return loginService
       .login(data)
       .then((res) => {
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({ ...res.data, isLogin: true })
-        );
+        console.log(res.data);
         dispatch({
           type: "login",
           payload: res.data,
         });
-        
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...res.data, isLogin: true })
+        );
       })
       .catch((err) => {
         return Promise.reject(err);

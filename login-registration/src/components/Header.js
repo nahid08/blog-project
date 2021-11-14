@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
-import  userService  from '../services/RegistrationService'
+import  logout from '../actions/logout';
 
 function PublicComponent() {
   return (
@@ -18,12 +18,13 @@ function PrivateComponent() {
 
   const user = useSelector(state => state.user);
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const onLogout = () => {
-    return userService.logout().then((data) => {
-      localStorage.clear('userInfo');
-      history.push('/');
-    })
+  const onLogout = (e) => {
+ 
+      dispatch(logout()).then((res) => {
+        history.push('/');
+      })
   }
 
   return (
@@ -31,7 +32,7 @@ function PrivateComponent() {
       <Link to="/" className="mr-2">Home</Link>
       <Link to={`/${user.username}`} className="mr-2"  >Profle</Link>
       <Link to={`/${user.username}/addblog`} className="mr-2">Add Blog</Link>
-      <Link oncClick={onLogout} >Logout</Link>
+      <Link to="#" onClick={onLogout} >Logout</Link>
     </React.Fragment>
   )
 }
@@ -56,6 +57,7 @@ function Header(props) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
     </>
   );
 }

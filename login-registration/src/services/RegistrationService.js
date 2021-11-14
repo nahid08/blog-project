@@ -11,6 +11,10 @@ export default {
         return http.post("/login", data);
     },
 
+    logout: (data) => {
+        return http.post('/logout', data);
+    },
+
     addBlog: (data) => {
         return http.post("/addblog", data);
     },

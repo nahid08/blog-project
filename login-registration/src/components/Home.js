@@ -7,7 +7,7 @@ export default function Home() {
   const [allBlog, setAllBlog] = useState([]);
 
   useEffect(() => {
-    console.log("home page");
+ 
     userService
       .getAllBlog()
       .then((res) => {
