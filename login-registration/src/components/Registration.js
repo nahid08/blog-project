@@ -46,10 +46,10 @@ export default function Registration() {
                         <Form.Control type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                     </Col>
                     <Col lg={12} className="mt-2">
-                        <Form.Control type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                        <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                     </Col>
                     <Col lg={12} className="mt-2">
-                        <Form.Control type="text" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value) }} />
+                        <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value) }} />
                     </Col>
                     <Col lg={12} className="mt-2">
                         <Button variant="primary" onClick={submit} block>Submit</Button>

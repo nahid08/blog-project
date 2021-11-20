@@ -3,6 +3,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+const http  = require('http').createServer(app);
+
+const io = require('socket.io')(http, {
+  cors: {
+    origin: 'http://localhost:3000',
+    credentials: true
+  }
+})
 
 app.use(cookieParser());
 app.use(
@@ -18,6 +26,28 @@ require("./src/model");
 
 require("./src/UserApi")(app);
 
-app.listen(8080, () => {
-  console.log("yes");
-});
+http.listen(8080, () => {});
+
+
+io.on("connection", (socket) => {
+  
+   socket.emit('hello', {
+     name: 'namir',
+     text: 'are you sad nahid?'
+   });
+
+   socket.on("react", (data) => {
+     console.log(data);
+   })
+
+   socket.on('chat', (data) => {
+     const { username, text } = data;
+     console.log(data);
+     socket.broadcast.emit('chat',{
+       username: username,
+       text: text
+     })
+   })
+
+   socket.emit('hello', 'world')
+})

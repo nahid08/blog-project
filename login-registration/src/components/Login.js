@@ -14,14 +14,10 @@ export default function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const onSubmit = () => {
+    const onLogin = () => {
         dispatch(login({username, password}))
         .then((res) => {
             history.push(`/${username}`)
-            Notification({
-                message: 'Successful',
-                appearance: 'success'
-            })
         })
     }
 
@@ -44,7 +40,7 @@ export default function Login() {
                         <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                     </Col>
                     <Col lg={12} className="mt-2" >
-                        <Button onClick={onSubmit} block>Login</Button>
+                        <Button onClick={onLogin} block>Login</Button>
                     </Col>
                     <Col lg={12}>
                         <a href="" onClick={goToRegister}>Create a account</a>
