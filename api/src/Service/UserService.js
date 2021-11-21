@@ -43,6 +43,27 @@ module.exports = {
     });
   },
 
+  editBlog: (data) => {
+    const { blogId, title, description} = data;
+
+    console.log(blogId);
+    console.log(title);
+    console.log(description);
+
+    return blogs.update({
+      title: title,
+      description: description
+    },
+    {
+      where: {
+        id: blogId
+      }
+    }).then((data) => {
+      console.log(data);
+      return data;
+    });
+  },
+  
   getBlog: (data) => {
     return blogs.findOne({
       include: [

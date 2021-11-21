@@ -10,6 +10,7 @@ import PrivateRoute from "./router/PrivateRouter";
 import PublicRoute from "./router/PublicRouter";
 import Header from "./components/Header";
 import Blog from "./components/Blog";
+import EditBlog from "./components/EditBlog";
 import Chat from  './components/Chat';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/:username/chat" component={Chat} />
           <PrivateRoute path="/:username/blog/:blogId" Component={Blog} />
           <PrivateRoute path="/:username/addblog" Component={AddBlog} />
+          <PrivateRoute path="/:username/editblog" Component={EditBlog} />
           <PrivateRoute path="/:username" Component={Profile} />
         </Switch>
       </BrowserRouter>

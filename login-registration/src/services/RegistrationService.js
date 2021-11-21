@@ -19,6 +19,11 @@ export default {
         return http.post("/addblog", data);
     },
 
+    editBlog: (data) => {
+        console.log('dsadsa');
+        return http.put('/editblog', data)
+    },
+
     getBlog: (queryParam) => {
         console.log(queryParam);
         return http.get('/getBlog', queryParam);

@@ -38,6 +38,18 @@ module.exports = {
       });
   },
 
+  editBlog: (req, res) => {
+    return userService.
+    editBlog(req.body)
+    .then((data) => {
+      return res.status(201).json(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return res.status(404).send(err);
+    })
+  },
+
   getBlog: (req, res) => {
    
     const { username, blogId } = req.query;
