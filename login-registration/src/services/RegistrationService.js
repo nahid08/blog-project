@@ -20,8 +20,11 @@ export default {
     },
 
     editBlog: (data) => {
-        console.log('dsadsa');
         return http.put('/editblog', data)
+    },
+
+    deleteBlog: (blogId) => {
+        return http.delete(`/deleteBlog/${blogId}`);
     },
 
     getBlog: (queryParam) => {

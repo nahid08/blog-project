@@ -10,11 +10,14 @@ module.exports = (app) => {
 
     app.post("/addblog", authenticateToken, UserController.addblog);
 
-    app.put('/editblog', authenticateToken, UserController.editBlog)
+    app.put('/editblog', authenticateToken, UserController.editBlog);
+
+    app.delete('/deleteblog/:blogId', authenticateToken, UserController.deleteBlog);
 
     app.get('/getBlog', authenticateToken, UserController.getBlog);
 
     app.get('/getBlogList', authenticateToken, UserController.getBlogList);
 
     app.get('/getAllBlog',  UserController.getAllBlog);
+
 }

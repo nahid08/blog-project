@@ -50,6 +50,15 @@ module.exports = {
     })
   },
 
+  deleteBlog: (req, res) => {
+    const { blogId } = req.params;
+    return userService.deleteBlog({blogId}).then((data) => {
+      res.status(200).json(data);
+    }).catch((err) => {
+      return res.status(404).send(err);
+    })
+  },
+
   getBlog: (req, res) => {
    
     const { username, blogId } = req.query;

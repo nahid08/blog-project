@@ -11,6 +11,8 @@ function Blog(props) {
   const { blogId, username } = useParams();
   const history = useHistory();
 
+  const user = useSelector((state) => state.user);
+
   const params = {
     username,
     blogId,
@@ -20,6 +22,7 @@ function Blog(props) {
     userService
       .getBlog({ params })
       .then((res) => {
+        console.log(res.data);
         setTitle(res.data.title);
         setDescription(res.data.description);
       })
@@ -37,6 +40,17 @@ function Blog(props) {
     });
   };
 
+  const deleteBlog = () => {
+    userService
+      .deleteBlog(blogId)
+      .then((res) => {
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <Container className=" mt-4">
@@ -44,9 +58,16 @@ function Blog(props) {
           <Col lg={10}>
             <h1 className="text-center">{title}</h1>
           </Col>
-          <Col>
-            <Button onClick={editBlog}>Edit</Button>
-          </Col>
+          {user.username === username && (
+            <>
+              <Col>
+                <Button onClick={editBlog}>Edit</Button>
+              </Col>
+              <Col>
+                <Button onClick={deleteBlog}>Delete</Button>
+              </Col>
+            </>
+          )}
         </Row>
         <Row>
           <Col>

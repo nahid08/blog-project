@@ -46,10 +46,6 @@ module.exports = {
   editBlog: (data) => {
     const { blogId, title, description} = data;
 
-    console.log(blogId);
-    console.log(title);
-    console.log(description);
-
     return blogs.update({
       title: title,
       description: description
@@ -64,6 +60,20 @@ module.exports = {
     });
   },
   
+  deleteBlog: (data) => {
+
+    return blogs.destroy({
+     where: {
+        id: data.blogId
+      }
+    }).then((data) => {
+      console.log('deleted');
+      console.log(data);
+      return "user is deleted successfully."
+    })
+
+  },
+
   getBlog: (data) => {
     return blogs.findOne({
       include: [
