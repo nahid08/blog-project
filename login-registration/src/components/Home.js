@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import userService from "../services/RegistrationService";
 import BlogCard from "./BlogCard";
 import { io } from "socket.io-client";
+import { toast } from "react-toastify";
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   const [ms, setMs] = useState("");
 
   useEffect(() => {
+    toast("Welcome to blog");
     userService
       .getAllBlog()
       .then((res) => {

@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector} from 'react-redux'
 import UserService from '../services/RegistrationService';
 import login from '../actions/login';
-import Notification from "../helper/Notification";
+import { toast } from 'react-toastify';
 
 export default function Login() {
 

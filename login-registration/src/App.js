@@ -12,7 +12,7 @@ import Header from "./components/Header";
 import Blog from "./components/Blog";
 import EditBlog from "./components/EditBlog";
 import Chat from  './components/Chat';
-
+import { ToastContainer } from 'react-toastify';
 function App() {
 
 
@@ -32,6 +32,7 @@ function App() {
           <PrivateRoute path="/:username" Component={Profile} />
         </Switch>
       </BrowserRouter>
+      <ToastContainer/>
     </>
   );
 }

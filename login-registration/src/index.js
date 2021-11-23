@@ -6,7 +6,8 @@ import { Provider } from "react-redux";
 import { ToastProvider, useToasts } from "react-toast-notifications";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 ReactDOM.render(
   <React.StrictMode>
