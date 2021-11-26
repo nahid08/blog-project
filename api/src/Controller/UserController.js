@@ -95,5 +95,14 @@ module.exports = {
        console.log(err.message)
        res.status(404).send(err);
      })
+  },
+
+  addComment: (req, res) => {
+    return userService.addComment(req.body).then((data) => {
+      console.log(req.body);
+      return res.status(200).json(data);
+    }).catch((err) => {
+      res.status(404).send(err);
+    })
   }
 };

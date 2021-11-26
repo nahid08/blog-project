@@ -1,5 +1,5 @@
 const { getBlog } = require("../Controller/UserController");
-const { user, blogs } = require("../model");
+const { user, blogs, comment } = require("../model");
 const { Op } = require("sequelize");
 const db = require("../model/index");
 
@@ -83,6 +83,9 @@ module.exports = {
           where: {
             username: data.username
           }
+        },
+        {
+          model: comment,
         }
       ],
       where: {
@@ -118,5 +121,17 @@ module.exports = {
     }).then((val) => {
       return val;
     }).catch(err => console.log(err))
+  },
+
+  addComment: (data) => {
+    return comment.create({
+      comment: data.commenttext,
+      username: data.username,
+      blogId: data.blogId
+    }).then((val) => {
+      return val;
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 };

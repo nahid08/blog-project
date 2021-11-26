@@ -1,5 +1,6 @@
 const UserController = require("./Controller/UserController");
 const { createToken, authenticateToken, clearToken} = require("./middlewares/JsonMiddleware");
+const UserService = require("./Service/UserService");
 
 module.exports = (app) => {
     app.post("/registration", UserController.registration);
@@ -19,5 +20,7 @@ module.exports = (app) => {
     app.get('/getBlogList', authenticateToken, UserController.getBlogList);
 
     app.get('/getAllBlog',  UserController.getAllBlog);
+
+    app.post('/addcomment', authenticateToken, UserController.addComment);
 
 }

@@ -38,5 +38,9 @@ export default {
 
     getAllBlog: () => {
         return http.get('/getAllBlog');
+    },
+
+    addComment: (data) => {
+        return http.post('/addcomment', data);
     }
 }

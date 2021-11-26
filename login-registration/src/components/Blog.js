@@ -3,10 +3,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useHistory, useParams, withRouter } from "react-router";
 import userService from "../services/RegistrationService";
+import CommentBox from "./CommentBox";
 
 function Blog(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [commentList, setCommentList] = useState([]);
 
   const { blogId, username } = useParams();
   const history = useHistory();
@@ -25,6 +27,7 @@ function Blog(props) {
         console.log(res.data);
         setTitle(res.data.title);
         setDescription(res.data.description);
+        setCommentList(res.data.comment);
       })
       .catch((err) => {});
   }, [title]);
@@ -74,6 +77,7 @@ function Blog(props) {
             <p>{description}</p>
           </Col>
         </Row>
+        <CommentBox commentList={commentList}/>
       </Container>
     </>
   );

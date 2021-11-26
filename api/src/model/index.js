@@ -12,12 +12,10 @@ db.sequelize = sequelize;
 
 db.user = require("./User")(sequelize, Sequelize);
 db.blogs = require('./Blogs')(sequelize, Sequelize);
-
+db.comment = require('./Comment')(sequelize, Sequelize);
 
 db = require('./relation')(db);
 
-
 // db.sequelize.sync({alter: true})
-
 
 module.exports = db; 
