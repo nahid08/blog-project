@@ -7,18 +7,21 @@ import registrationService from "../services/RegistrationService";
 
 function Comment(props) {
   const [commenttext, setCommentText] = useState("");
-  const [commentList, setCommentList] = useState([]);
+
+  console.log(props.commentList);
 
   const { blogId } = useParams();
   const { username } = useSelector((state) => state.user);
 
   const renderComments = () => {
-      console.log(commentList);
-    return commentList.map((comment, index) => {
+    return props.commentList.map((comment, index) => {
       return (
         <>
-          <Col className="border" sm={12}>
-            <p>{comment.comment}</p>
+          <Col className="border" sm={12} className="h-100">
+            <p>
+              <span className="font-weight-bold">{comment.username}</span> -{" "}
+              {comment.comment}
+            </p>
           </Col>
         </>
       );
@@ -29,23 +32,18 @@ function Comment(props) {
     setCommentText(e.target.value);
   };
 
-
-
   const addComment = () => {
-    registrationService
-      .addComment({ username, blogId, commenttext })
-      .then((res) => {
-         console.log(res.data);
-        setCommentText("");  
-        const list = commentList;
-        list.push(res.data);
-        setCommentList([...list]);
-      });
+    props.addComment(commenttext);
   };
 
   return (
     <>
       <Container>
+        <Row>
+          <Col >
+          <h1 className="text-center">Comments</h1>
+          </Col>
+        </Row>
         <Row>{renderComments()}</Row>
         <Row>
           <Col className="p-0">
@@ -55,13 +53,15 @@ function Comment(props) {
               className="w-100 mt-3"
               value={commenttext}
               onChange={handleChange}
-             
+              placeholder="Add a comment"
             />
           </Col>
         </Row>
         <Row>
           <Col>
-            <Button onClick={addComment}>Add</Button>
+            <Button disabled={commenttext ? false : true} onClick={addComment}>
+              Add
+            </Button>
           </Col>
         </Row>
       </Container>

@@ -27,7 +27,7 @@ function Blog(props) {
         console.log(res.data);
         setTitle(res.data.title);
         setDescription(res.data.description);
-        setCommentList(res.data.comment);
+        setCommentList(res.data.comments);
       })
       .catch((err) => {});
   }, [title]);
@@ -54,6 +54,18 @@ function Blog(props) {
       });
   };
 
+  const addComment = (commenttext) => {
+    console.log(commenttext);
+    userService
+      .addComment({ username: user.username, blogId, commenttext })
+      .then((res) => {
+        console.log(res.data);
+        const list = commentList;
+        list.push(res.data);
+        setCommentList([...list]);
+      });
+  };
+
   return (
     <>
       <Container className=" mt-4">
@@ -77,7 +89,7 @@ function Blog(props) {
             <p>{description}</p>
           </Col>
         </Row>
-        <CommentBox commentList={commentList}/>
+        <CommentBox commentList={commentList} addComment={addComment} />
       </Container>
     </>
   );
