@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import TextAreaAutoSize from "react-textarea-autosize";
 import { useParams, withRouter } from "react-router";
 import { useSelector } from "react-redux";
-import registrationService from "../services/RegistrationService";
 
 function Comment(props) {
   const [commenttext, setCommentText] = useState("");
@@ -34,14 +33,15 @@ function Comment(props) {
 
   const addComment = () => {
     props.addComment(commenttext);
+    setCommentText("");
   };
 
   return (
     <>
       <Container>
         <Row>
-          <Col >
-          <h1 className="text-center">Comments</h1>
+          <Col>
+            <h1 className="text-center">Comments</h1>
           </Col>
         </Row>
         <Row>{renderComments()}</Row>
