@@ -30,6 +30,8 @@ http.listen(8080, () => {});
 
 
 io.on("connection", (socket) => {
+
+  console.log(socket.id);
   
    socket.emit('hello', {
      name: 'namir',

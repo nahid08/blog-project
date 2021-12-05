@@ -16,6 +16,6 @@ db.comment = require('./Comment')(sequelize, Sequelize);
 
 db = require('./relation')(db);
 
-db.sequelize.sync({alter: true})
+// db.sequelize.sync({alter: true})
 
 module.exports = db; 
