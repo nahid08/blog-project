@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 function Comment(props) {
   const [commenttext, setCommentText] = useState("");
 
-  console.log(props.commentList);
 
   const { blogId } = useParams();
   const { username } = useSelector((state) => state.user);

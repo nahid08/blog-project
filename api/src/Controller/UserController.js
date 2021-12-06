@@ -1,4 +1,3 @@
-const UserService = require("../Service/UserService");
 const userService = require("../Service/UserService");
 
 module.exports = {
@@ -18,7 +17,7 @@ module.exports = {
       .login(req.body)
       .then((data) => {
         req.body.id = data.id;
-        req.body.email = data.email
+        req.body.email = data.email;
         next();
       })
       .catch((err) => {
@@ -39,28 +38,30 @@ module.exports = {
   },
 
   editBlog: (req, res) => {
-    return userService.
-    editBlog(req.body)
-    .then((data) => {
-      return res.status(201).json(data);
-    })
-    .catch((err) => {
-      console.log(err.message);
-      return res.status(404).send(err);
-    })
+    return userService
+      .editBlog(req.body)
+      .then((data) => {
+        return res.status(201).json(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        return res.status(404).send(err);
+      });
   },
 
   deleteBlog: (req, res) => {
     const { blogId } = req.params;
-    return userService.deleteBlog({blogId}).then((data) => {
-      res.status(200).json(data);
-    }).catch((err) => {
-      return res.status(404).send(err);
-    })
+    return userService
+      .deleteBlog({ blogId })
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => {
+        return res.status(404).send(err);
+      });
   },
 
   getBlog: (req, res) => {
-   
     const { username, blogId } = req.query;
 
     return userService
@@ -89,20 +90,30 @@ module.exports = {
   },
 
   getAllBlog: (req, res) => {
-     return userService.getAllBlog().then((data) => {
-       return res.status(200).json(data);
-     }).catch((err) => {
-       console.log(err.message)
-       res.status(404).send(err);
-     })
+    return userService
+      .getAllBlog()
+      .then((data) => {
+        return res.status(200).json(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        res.status(404).send(err);
+      });
   },
 
   addComment: (req, res) => {
-    return userService.addComment(req.body).then((data) => {
-      console.log(req.body);
-      return res.status(200).json(data);
-    }).catch((err) => {
-      res.status(404).send(err);
-    })
-  }
+   
+    return userService
+      .addComment(req.body)
+      .then((data) => {
+        req.io.emit("comment", {
+          data: data,
+        });
+        return res.status(200).json();
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(404).send(err);
+      });
+  },
 };

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useHistory, useParams, withRouter } from "react-router";
 import userService from "../services/RegistrationService";
 import CommentBox from "./CommentBox";
+import { socket } from "../helper/Socket";
 
 function Blog(props) {
   const [title, setTitle] = useState("");
@@ -21,16 +22,30 @@ function Blog(props) {
   };
 
   useEffect(() => {
+    console.log("first");
     userService
       .getBlog({ params })
       .then((res) => {
-        console.log(res.data);
         setTitle(res.data.title);
         setDescription(res.data.description);
-        setCommentList(res.data.comments);
+        setCommentList([...res.data.comments]);
       })
       .catch((err) => {});
-  }, [title]);
+  }, []);
+
+  useEffect(() => {
+    socket.on("comment", (res) => {
+      const { data } = res;
+      if (data.blogId === blogId) {
+        console.log("yerss");
+        console.log(data);
+        const list = commentList;
+        console.log(commentList);
+        list.push(data);
+        setCommentList([...list]);
+      }
+    });
+  })
 
   const editBlog = () => {
     history.push({
@@ -59,10 +74,7 @@ function Blog(props) {
     userService
       .addComment({ username: user.username, blogId, commenttext })
       .then((res) => {
-        console.log(res.data);
-        const list = commentList;
-        list.push(res.data);
-        setCommentList([...list]);
+       
       });
   };
 

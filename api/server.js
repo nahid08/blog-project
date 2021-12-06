@@ -24,31 +24,27 @@ app.use(express.json());
 
 require("./src/model");
 
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+})
+
 require("./src/UserApi")(app);
 
 http.listen(8080, () => {});
 
 
 io.on("connection", (socket) => {
-
-  console.log(socket.id);
-  
-   socket.emit('hello', {
-     name: 'namir',
-     text: 'are you sad nahid?'
-   });
-
-   socket.on("react", (data) => {
-     console.log(data);
-   })
-
    socket.on('chat', (data) => {
      const { username, text } = data;
-     console.log(data);
      socket.broadcast.emit('chat',{
        username: username,
        text: text
      })
+   })
+
+   socket.on('comment', (data) => {
+     console.log(data);
    })
 
    socket.emit('hello', 'world')

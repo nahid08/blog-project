@@ -11,9 +11,6 @@ const createToken = (req,res,next) => {
 
     var { id } = req.body;
     const accessToken = jwt.sign({id: id.toString()}, sercret_value, { expiresIn: "2days"});
-
-    console.log(req.body);
-    console.log('createtoken');
     
     res.cookie("jwt", accessToken, cookieOptions)
     .json(req.body);

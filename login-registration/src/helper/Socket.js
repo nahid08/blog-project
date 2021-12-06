@@ -4,6 +4,7 @@ export const socket = io("http://localhost:8080", {
   withCredentials: true,
 });
 
-socket.on('connect', () => {
+socket.on("connect", () => {
+  console.log('dsadsa')
   console.log(socket.id);
-})
+});
