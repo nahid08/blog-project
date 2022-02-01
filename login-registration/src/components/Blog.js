@@ -31,6 +31,8 @@ function Blog(props) {
         setCommentList([...res.data.comments]);
       })
       .catch((err) => {});
+
+      
   }, []);
 
   useEffect(() => {
