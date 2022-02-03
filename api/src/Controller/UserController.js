@@ -1,4 +1,5 @@
 const userService = require("../Service/UserService");
+const awsService = require("../Service/awsService"); 
 
 module.exports = {
   registration: (req, res) => {
@@ -116,4 +117,10 @@ module.exports = {
         res.status(404).send(err);
       });
   },
+
+  addImage: (req, res) => {
+    console.log(req.file);
+    return awsService.imageUpload(req,res);
+  }
 };
+

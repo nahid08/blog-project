@@ -18,11 +18,11 @@ const createToken = (req,res,next) => {
 };
 
 const authenticateToken = (req,res,next) => {
-
     const token = req.cookies.jwt;
 
     jwt.verify(token, sercret_value, (err, decoded) => {
         if(err) {
+            console.log(err);
             res.status(403).send("Forbidden");
             return;
         }

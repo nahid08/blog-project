@@ -1,9 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const aws = require("aws-sdk");
+const fs = require("fs");
 
 const app = express();
 const http  = require('http').createServer(app);
+const upload = multer({dest: 'uploads/'});
 
 const io = require('socket.io')(http, {
   cors: {
@@ -20,6 +24,8 @@ app.use(
     credentials: true,
   })
 );
+
+
 app.use(express.json());
 
 require("./src/model");

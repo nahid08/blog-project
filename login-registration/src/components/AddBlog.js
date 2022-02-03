@@ -7,6 +7,7 @@ import userService from "../services/RegistrationService";
 function AddBlog(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState();
 
   const history = useHistory();
 
@@ -25,15 +26,14 @@ function AddBlog(props) {
           id: res.data.id,
           title: res.data.title,
           description: res.data.description,
+          image: image
         },
       });
     });
   };
 
-  const image = (e) => {
-    console.log(e.target.files[0]);
-    console.log(URL.createObjectURL(e.target.files[0]));
-  }
+ 
+
 
   return (
     <Container>
@@ -67,11 +67,6 @@ function AddBlog(props) {
           </Form.Group>
         </Col>
       </Row>
-      <Row>
-        <Col>
-        <Form.Control type="file" onChange={image} />
-        </Col>
-        </Row>
       <Row>
         <Col className="mt-2">
           <Button onClick={addBlog}>Add</Button>

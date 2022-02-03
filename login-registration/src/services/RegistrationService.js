@@ -1,4 +1,4 @@
-import http from "../http-common";
+import {http, http1} from "../http-common";
 
 
 export default {
@@ -17,6 +17,10 @@ export default {
 
     addBlog: (data) => {
         return http.post("/addblog", data);
+    },
+
+    addImage: (data) => {
+        return http1.post('/image', data);
     },
 
     editBlog: (data) => {

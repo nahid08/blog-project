@@ -1,5 +1,6 @@
 const UserController = require("./Controller/UserController");
 const { createToken, authenticateToken, clearToken} = require("./middlewares/JsonMiddleware");
+const { imageProcess} = require("./middlewares/imageProcess");
 const UserService = require("./Service/UserService");
 
 module.exports = (app) => {
@@ -23,4 +24,9 @@ module.exports = (app) => {
 
     app.post('/addcomment', authenticateToken, UserController.addComment);
 
+    app.post('/image', authenticateToken, imageProcess, UserController.addImage)
+
+
 }
+
+
