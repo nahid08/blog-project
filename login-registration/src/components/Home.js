@@ -11,7 +11,7 @@ export default function Home() {
   const [ms, setMs] = useState("");
 
   useEffect(() => {
-    toast("Welcome to blog");
+
     userService
       .getAllBlog()
       .then((res) => {

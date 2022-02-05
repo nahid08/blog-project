@@ -23,6 +23,10 @@ export default {
         return http1.post('/image', data);
     },
 
+    getImage: (data) => {
+        return http.get('/getImage', data);
+    },
+
     editBlog: (data) => {
         return http.put('/editblog', data)
     },

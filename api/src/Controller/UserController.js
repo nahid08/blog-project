@@ -119,8 +119,12 @@ module.exports = {
   },
 
   addImage: (req, res) => {
-    console.log(req.file);
+
     return awsService.imageUpload(req,res);
+  },
+
+  getImage: (req, res) => {
+    return awsService.getImage(req,res);
   }
 };
 

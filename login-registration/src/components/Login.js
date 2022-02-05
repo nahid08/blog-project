@@ -28,7 +28,6 @@ export default function Login() {
     return (
         <>
             <Container>
-
                 <Row>
                     <Col lg={12}>
                         <h1 className="text-center">Login</h1>

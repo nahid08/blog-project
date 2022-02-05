@@ -24,8 +24,9 @@ module.exports = (app) => {
 
     app.post('/addcomment', authenticateToken, UserController.addComment);
 
-    app.post('/image', authenticateToken, imageProcess, UserController.addImage)
+    app.post('/image', imageProcess, authenticateToken, UserController.addImage)
 
+    app.get("/getImage", authenticateToken, UserController.getImage);
 
 }
 

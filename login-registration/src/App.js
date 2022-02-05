@@ -12,7 +12,6 @@ import Header from "./components/Header";
 import Blog from "./components/Blog";
 import EditBlog from "./components/EditBlog";
 import Chat from  './components/Chat';
-import Image  from './components/Image';
 import { ToastContainer } from 'react-toastify';
 function App() {
 
@@ -27,7 +26,6 @@ function App() {
           <PublicRoute path="/login" Component={Login} />
           <PublicRoute path="/registration" Component={Registration} />
           <Route path="/:username/chat" component={Chat} />
-          <Route path="/image" component={Image} exact/>
           <PrivateRoute path="/:username/blog/:blogId" Component={Blog} />
           <PrivateRoute path="/:username/addblog" Component={AddBlog} />
           <PrivateRoute path="/:username/editblog" Component={EditBlog} />

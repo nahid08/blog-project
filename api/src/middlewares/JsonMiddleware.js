@@ -27,7 +27,6 @@ const authenticateToken = (req,res,next) => {
             return;
         }
         req.body.id = parseInt(decoded.id);
-        console.log(decoded.id, 'tes');
         next();
     });
 };
